@@ -1,7 +1,7 @@
 // modules/parentMode.js
 
 import { AppState } from './state.js';
-import { generateVisualFeedback, hideCelebrationMessage } from './visuals.js';
+import { generateVisualFeedback, hideCelebrationMessage, changeBackgroundGradient } from './visuals.js'; // Import changeBackgroundGradient
 import { clearCanvas, startNewTracingTarget } from './tracing.js';
 import { colors as allColors } from './lessons.js'; // Import allColors for background gradient
 
@@ -211,9 +211,7 @@ export function deactivateParentMode() {
         lockOverlay.style.animation = 'background-flow 30s linear infinite alternate';
         lockOverlay.style.backgroundSize = '200% 200%';
         // Ensure changeBackgroundGradient is called to set initial dynamic gradient
-        const color1 = getRandomElement(allColors); // Use allColors here
-        const color2 = getRandomElement(allColors); // Use allColors here
-        lockOverlay.style.background = `radial-gradient(circle at center, ${color1}, ${color2})`;
+        changeBackgroundGradient(); // Call the function to set a random gradient
     }
     AppState.setHasInteracted(false); // Reset interaction flag so initial messages can show again on re-lock
     hideCelebrationMessage(); // Ensure celebration message is hidden
@@ -287,4 +285,3 @@ export function unlockScreen() {
 
 // Export parentModeSequence and related variables for events.js to use
 export { parentModeSequence, currentSequenceIndex, lastTapTime, tapTimeout };
-
