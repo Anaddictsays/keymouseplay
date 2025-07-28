@@ -203,3 +203,14 @@ body {
     text-indent: -9999px; /* Hide text content */
     overflow: hidden; /* Hide overflow from text-indent */
 }
+
+/* Ensure visual-feedback-area is above canvas */
+#visual-feedback-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Ensure pop-ups are above canvas */
+    pointer-events: none; /* Still don't block events */
+}
