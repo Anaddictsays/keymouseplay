@@ -3,6 +3,7 @@
 import { AppState } from './state.js';
 import { generateVisualFeedback, hideCelebrationMessage } from './visuals.js';
 import { clearCanvas, startNewTracingTarget } from './tracing.js';
+import { colors as allColors } from './lessons.js'; // Import allColors for background gradient
 
 // DOM element references (will be initialized via AppState._elements)
 let mainTitle;
@@ -210,8 +211,8 @@ export function deactivateParentMode() {
         lockOverlay.style.animation = 'background-flow 30s linear infinite alternate';
         lockOverlay.style.backgroundSize = '200% 200%';
         // Ensure changeBackgroundGradient is called to set initial dynamic gradient
-        const color1 = getRandomElement(AppState.colors); // Assuming colors is accessible via AppState or passed
-        const color2 = getRandomElement(AppState.colors);
+        const color1 = getRandomElement(allColors); // Use allColors here
+        const color2 = getRandomElement(allColors); // Use allColors here
         lockOverlay.style.background = `radial-gradient(circle at center, ${color1}, ${color2})`;
     }
     AppState.setHasInteracted(false); // Reset interaction flag so initial messages can show again on re-lock
@@ -257,7 +258,9 @@ export function lockScreen() {
     stopParentInstructionTimer(); // Ensure it's stopped before initial timeout
     parentModeInstruction.classList.add('hidden');
     hideAllLessonPanels(); // Ensure all panels are hidden
-    backToParentMenuFromLessonBtn.classList.add('hidden'); // Ensure this is hidden initially
+    if (AppState._elements.backToParentMenuFromLessonBtn) { // Defensive check
+        AppState._elements.backToParentMenuFromLessonBtn.classList.add('hidden'); // Ensure this is hidden initially
+    }
 
     // After initialMessageDuration, hide toddler messages and start parent instruction cycle
     setTimeout(() => {
