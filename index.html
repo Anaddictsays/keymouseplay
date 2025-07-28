@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toddler Interactive Screen</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+    <!-- The main overlay that covers the entire screen when locked -->
+    <div id="lock-overlay" class="rounded-lg">
+        <!-- Initial messages (shown first) -->
+        <h1 id="main-title" class="text-white text-5xl md:text-7xl font-extrabold mb-8 text-center animate-pulse">
+            Ready to Play!
+        </h1>
+        <p id="main-message" class="text-white text-xl md:text-2xl text-center">
+            Tap or swipe the screen!
+        </p>
+        <!-- Parent Mode Activation Instruction (initially hidden) -->
+        <p id="parent-mode-instruction" class="text-white text-xl md:text-2xl text-center animate-heartbeat hidden">
+            Tap all four corners clockwise to activate Parent Mode
+        </p>
+        <!-- This area will be dynamically populated with visual feedback -->
+        <div id="visual-feedback-area"></div>
+        <!-- Canvas for tracing -->
+        <canvas id="tracing-canvas"></canvas>
+
+        <!-- Back to Parent Menu button visible during active lesson play -->
+        <button id="back-to-parent-menu-from-lesson" class="top-left-back-button hidden">Back to Parent Menu</button>
+
+        <!-- Celebration Message -->
+        <div id="celebration-message" class="hidden"></div>
+    </div>
+
+    <!-- Main Parent Control Panel -->
+    <div id="parent-control-panel" class="parent-panel hidden">
+        <button id="color-recognition-btn">Color Recognition</button>
+        <button id="shape-recognition-btn">Shape Recognition</button>
+        <button id="letter-number-btn">Letter/Number Introduction</button>
+        <button id="freeplay-btn">Back to Freeplay</button>
+    </div>
+
+    <!-- Lesson Specific Panels (initially hidden) -->
+    <div id="color-lesson-panel" class="parent-panel hidden">
+        <button id="color-primary-btn">Primary Colors</button>
+        <button id="color-all-btn">All Colors</button>
+        <button class="back-to-parent-menu-btn" id="color-back-btn">Back to Parent Menu</button>
+    </div>
+
+    <div id="shape-lesson-panel" class="parent-panel hidden">
+        <button id="shape-basic-btn">Basic Shapes</button>
+        <button id="shape-advanced-btn">Advanced Shapes</button>
+        <button class="back-to-parent-menu-btn" id="shape-back-btn">Back to Parent Menu</button>
+    </div>
+
+    <div id="letter-number-lesson-panel" class="parent-panel hidden">
+        <button id="letter-az-btn">Letters (A-Z)</button>
+        <button id="number-09-btn">Numbers (0-9)</button>
+        <button class="back-to-parent-menu-btn" id="letter-number-back-btn">Back to Parent Menu</button>
+    </div>
+
+    <!-- Main application script -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
