@@ -96,6 +96,7 @@ export async function generateVisualFeedback(type, x, y, content = '') {
         elementFontSize = `${Math.random() * 10 + 5}px`; // Very small for subtle glow
         visualElement.classList.add('glow-trail'); // Add a specific class for glow trail styling
         visualElement.style.setProperty('--element-color', elementColor); // Pass color to CSS variable
+        elementContent = ''; // Explicitly ensure no text content for glow trails
     }
 
     if (!elementContent && !isGlowTrail) return; // Don't append if no content and not a glow trail
