@@ -20,7 +20,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    z-index: 9999; /* Ensure it's on top of everything */
+    z-index: 100; /* Adjusted z-index */
     transition: background 0.5s ease-in-out; /* Smooth background transitions for gradients */
     cursor: none; /* Hide cursor when locked */
     animation: background-flow 30s linear infinite alternate; /* Continuous, subtle background animation */
@@ -81,7 +81,7 @@ body {
     flex-direction: column; /* Stack buttons vertically */
     align-items: center; /* Center buttons horizontally within panel */
     gap: 1rem; /* More space between stacked buttons */
-    z-index: 10000; /* Ensure it's on top */
+    z-index: 200; /* Adjusted z-index */
     border-radius: 1rem; /* Rounded corners for the whole panel */
     box-shadow: 0 5px 20px rgba(0,0,0,0.5); /* Stronger shadow */
     opacity: 0; /* Start hidden */
@@ -143,7 +143,7 @@ body {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    z-index: 10001; /* Ensure it's above other panel elements */
+    z-index: 104; /* Adjusted z-index */
     font-size: 1.2rem; /* Slightly smaller than main buttons */
     color: #06D6A0; /* Green text */
     background-color: transparent;
@@ -165,7 +165,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Below visual-feedback-area, above background */
+    z-index: 101; /* Adjusted z-index */
     pointer-events: none; /* Initially don't block events */
 }
 
@@ -180,7 +180,7 @@ body {
     color: #FFD166; /* Yellow color */
     text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
     opacity: 0;
-    z-index: 10002; /* Above everything else */
+    z-index: 201; /* Adjusted z-index */
     pointer-events: none;
     user-select: none;
     transition: all 0.3s ease-out; /* Smooth transition for scale and opacity */
@@ -211,6 +211,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2; /* Ensure pop-ups are above canvas */
+    z-index: 102; /* Adjusted z-index */
     pointer-events: none; /* Still don't block events */
+}
+
+/* Z-index for initial messages and parent instruction */
+#main-title, #main-message, #parent-mode-instruction {
+    z-index: 103; /* Adjusted z-index */
 }
